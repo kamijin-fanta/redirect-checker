@@ -13,8 +13,13 @@ builds:
     env:
       - CGO_ENABLED=0
     goos:
+      - linux
+      - windows
+      - darwin
       - freebsd
       - windows
+    goarch:
+      - amd64
 archives:
   - name_template: '{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
     replacements:
