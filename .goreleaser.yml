@@ -12,6 +12,9 @@ builds:
       - -X main.Revision={{.ShortCommit}}
     env:
       - CGO_ENABLED=0
+    goos:
+      - freebsd
+      - windows
 archives:
   - name_template: '{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
     replacements:
@@ -20,8 +23,8 @@ archives:
       windows: windows
       386: i386
       amd64: x86_64
-    format_overrides:
-      - goos: windows
-        format: zip
+    format: binary
+    files:
+      - none*
 release:
   prerelease: auto
